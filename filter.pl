@@ -127,6 +127,7 @@ __END__
 =head1 NAME
 
 filter.pl - Filter B<file_to_filter.txt> with B<reference_file.txt>
+See examples bellow.
 
 =head1 SYNOPSIS
 
