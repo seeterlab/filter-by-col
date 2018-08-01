@@ -126,15 +126,15 @@ __END__
 
 =head1 NAME
 
-filter.pl - Filter file2 with file1
+filter.pl - Filter B<file_to_filter.txt> with B<reference_file.txt>
 
 =head1 SYNOPSIS
 
-filter.pl [-v|--invert-match] [-a|--key1 num,num,...] [-b|--key2 num,num,...] file1 [file2]
+filter.pl [-v|--invert-match] [-a|--key1 num,num,...] [-b|--key2 num,num,...] B<reference_file.txt> [B<file_to_filter.txt>]
 
 or
 
-filter.pl [-v|--invert-match] [-k|--key num,num,...] file1 [file2]
+filter.pl [-v|--invert-match] [-k|--key num,num,...] B<reference_file.txt> [B<file_to_filter.txt>]
 
 or
 
@@ -146,21 +146,21 @@ filter.pl [--help|--man]
 
 =item B<-v|--invert-match>
 
-If specified, match is inverted: print lines that do not match those of file1.
+If specified, match is inverted: print lines that do not match those of B<reference_file.txt>.
 
 =item B<-a|--key1>
 
-Specify one based and comma separated column numbers to consider for file1.
+Specify one based and comma separated column numbers to consider for B<reference_file.txt>.
 Default value: 1
 
 =item B<-b|--key2>
 
-Specify one based and comma separated column numbers to consider for file2.
+Specify one based and comma separated column numbers to consider for B<file_to_filter.txt>.
 Default value: 1
 
 =item B<-k|--key>
 
-Specify one based and comma separated column numbers to consider for file1 and file2.
+Specify one based and comma separated column numbers to consider for B<reference_file.txt> and B<file_to_filter.txt>.
 Default value: 1
 
 =item B<-help>
@@ -175,9 +175,9 @@ Prints the manual page and exits.
 
 =head1 DESCRIPTION
 
-B<filer.pl> filters file2 with file1 based on the specified key columns.
+B<filer.pl> filters B<file_to_filter.txt> with B<reference_file.txt> based on the specified key columns.
 Files do not have to be sorted.
-If file2 is omitted, stdin is read instead.
+If B<file_to_filter.txt> is omitted, stdin is read instead.
 
 
 =head1 EXAMPLES
@@ -186,25 +186,25 @@ If file2 is omitted, stdin is read instead.
 
 If the key column numbers are in the same order in both files, you can specify those numbers with B<-k> (or --key):
 
-    filter.pl -k 1,2 ref_file.txt file_to_filter.txt
+    filter.pl -k 1,2 B<reference_file.txt> B<file_to_filter.txt>
 
 =head2 Different key columns order in each file
 
 If the key column numbers are NOT in the same order in both files, use B<-a> and B<-b> (or --key1 and --key2):
 
-    filter.pl -a 1,2 -b 3,1 ref_file.txt file_to_filter.txt
+    filter.pl -a 1,2 -b 3,1 B<reference_file.txt> B<file_to_filter.txt>
 
 =head2 Reading from stdin
 
-If file2 (file_to_filter.txt in this example) is omitted, sdtin is read instead:
+If B<file_to_filter.txt> is omitted, sdtin is read instead:
 
-    cat file_to_filter.txt | filter.pl -k 1,2 ref_file.txt
+    cat B<file_to_filter.txt> | filter.pl -k 1,2 B<reference_file.txt>
 
 =head1 SAMPLE FILES
 
-If B<ref_file.txt> and B<file_to_filter.txt> have the following content:
+If B<reference_file.txt> and B<file_to_filter.txt> have the following content:
 
-=head2 ref_file.txt
+=head2 reference_file.txt
 
     1	abc	13259250
     1	def	13282200
@@ -254,7 +254,7 @@ If B<ref_file.txt> and B<file_to_filter.txt> have the following content:
 
 The following command produces the output below:
 
-    filter.pl -a 1,2 -b 3,1 ref_file.txt file_to_filter.txt
+    filter.pl -a 1,2 -b 3,1 B<reference_file.txt> B<file_to_filter.txt>
 
     ijkl 13255820 	 1 200
     mnop 13319760 	 1 200
@@ -266,7 +266,7 @@ The following command produces the output below:
 
 The following command produces the output below:
 
-    filter.pl -v -a 1,2 -b 3,1 ref_file.txt file_to_filter.txt
+    filter.pl -v -a 1,2 -b 3,1 B<reference_file.txt> B<file_to_filter.txt>
 
     1325 13253660 	 1 260
     1325 13259040 	 1 380
